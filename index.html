@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body >
+    <div id="form-container" class="light">
+        <form action="">
+            <label for="zipcode">Location or Zipcode</label>
+            <input type="text" name="zipcode" id="zipcode">
+            <input type="submit" name="submit" id="submit" value="Submit">
+        </form>
+        <button class="change-temp"><img src="icons/thermometer-glass-fahrenheit.svg" id="change-temp-icon"class="icon"></button>
+    </div>
+    
+
+    <div class="weather-card hidden">
+        <h2 class="location"></h2>
+        <h4 class="temp"></h4>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
