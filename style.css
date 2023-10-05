@@ -2,9 +2,25 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 body{
-    background-color: darkgrey;
+    background-color: darkslategray;
     transition: background-color .5s ;
 }
+
+nav{
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    background-color: rgb(80, 80, 80);
+    border-radius: 20px;
+    border: 2px solid orange;
+    margin-bottom: 1em;
+}
+
+a{
+    text-decoration: none;
+    color: orange;
+}
+
 .change-temp {
     border-radius: 100px;
     border: none;
@@ -23,6 +39,7 @@ body{
     margin-right: auto;
     align-items: center;
     height: 100px;
+    background-color: whitesmoke;
 }
 
 .weather-card {
@@ -36,6 +53,11 @@ body{
     border-radius: 15px;
     margin-top: 4em;
     padding: 2em;
+}
+
+.brand{
+    display: flex;
+    align-items: center;
 }
 
 .hidden{
@@ -64,8 +86,7 @@ body{
 }
 
 .light{
-    background-color: rgb(253, 255, 238);
-    border: solid lightslategrey 2px;
+    border: solid rgb(141, 226, 255) 2px;
 }
 
 .dark{
