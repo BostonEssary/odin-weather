@@ -1,5 +1,5 @@
 const KEY = '?key=0be96db5acc6427f81c173514230510'
-const BASE_URL = 'http://api.weatherapi.com/v1'
+const BASE_URL = 'https://api.weatherapi.com/v1'
 const CURRENT_WEATHER = '/current.json'
 let userLocation = '&q='
 let fTemp = true
