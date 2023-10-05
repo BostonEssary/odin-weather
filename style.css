@@ -8,6 +8,7 @@ body{
 
 nav{
     display: flex;
+    flex-flow: column;
     align-items: center;
     padding: 1em;
     background-color: rgb(78, 78, 78);
@@ -19,6 +20,25 @@ nav{
 a{
     text-decoration: none;
     color: rgb(190, 232, 246);
+}
+
+label{
+    font-size: small;
+    
+    margin-bottom: 2em;
+}
+
+input{
+    border-radius: 20px;
+    border: none;
+    margin-top: 1em;
+}
+
+#form{
+    padding: .5em;
+    border-radius: 30px;
+    padding: 1em;
+    color: light;
 }
 
 .change-temp {
@@ -38,13 +58,12 @@ a{
     margin-left: auto;
     margin-right: auto;
     align-items: center;
-    height: 100px;
     background-color: whitesmoke;
 }
 
 .weather-card {
     background-color: white;
-    width: 400px;
+    max-width: 400px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -53,7 +72,16 @@ a{
     border-radius: 15px;
     margin-top: 4em;
     padding: 2em;
+    align-items: center;
 }
+
+.condition-container{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+}
+
 
 .brand{
     display: flex;

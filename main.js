@@ -12,6 +12,7 @@ const formContainer = document.getElementById('form-container')
 const weatherCard = document.querySelector(".weather-card")
 const condition = document.querySelector(".condition")
 const conditionIcon = document.querySelector('.condition-icon')
+const form = document.querySelector('.form')
 const nav = document.getElementById('nav')
 
 
@@ -38,27 +39,32 @@ function changeBGColorFahren(climate){
   document.body.removeAttribute('class')
   formContainer.removeAttribute('class')
   nav.removeAttribute('class')
+  form.removeAttribute('class')
   if(climate >= 100){
     document.body.classList.add('hot')
     nav.classList.add('hot')
+    form.classList.add('hot')
     formContainer.classList.add('light')
   }
   else if (climate >= 80){
     document.body.classList.add('sunny')
     formContainer.classList.add('light')
     nav.classList.add('sunny')
+    form.classList.add('sunny')
 
   }
   else if(climate >= 50){
     document.body.classList.add('cool')
     formContainer.classList.add('dark')
     nav.classList.add('cool')
+    form.classList.add('cool')
 
   }
   else{
     document.body.classList.add('cold')
     formContainer.classList.add('dark')
     nav.classList.add('cold')
+    form.classList.add('cold')
 
   }
 }
@@ -90,10 +96,10 @@ function fetchData(){
   .then(function(response) {
     console.log(response)
     console.log(response.current.condition.text)
-    area.textContent = response.location.name
+    area.textContent = response.location.name + ', ' + response.location.region
     condition.textContent = response.current.condition.text
     if(fTemp === true ){
-      temp.textContent = response.current.temp_f + ' Fº'
+      temp.textContent = 'Temp: ' + response.current.temp_f + ' Fº'
       changeBGColorFahren(response.current.temp_f)
 
     }
@@ -116,6 +122,9 @@ function fetchData(){
     }
     else if(response.current.condition.text === "Mist" ){
       conditionIcon.src = "icons/mist.svg"
+    }
+    else if(response.current.condition.text === "Overcast" ){
+      conditionIcon.src = "icons/overcast.svg"
     }
       
   });

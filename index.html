@@ -11,22 +11,24 @@
         <a href="">
             <div class="brand"><img src="icons/smiling-sun-handmade-symbol-svgrepo-com.svg" class="icon" alt="">Odin-Weather</div>
         </a>
+        <div id="form-container" class="light">
+            <form id="form" class="form">
+                <label for="zipcode">Location or Zipcode</label>
+                <input type="text" name="zipcode" id="zipcode">
+                <input type="submit" name="submit" id="submit" value="Submit">
+            </form>
+            <button class="change-temp"><img src="icons/thermometer-glass-fahrenheit.svg" id="change-temp-icon"class="icon"></button>
+        </div>
     </nav>
     
-    <div id="form-container" class="light">
-        <form action="">
-            <label for="zipcode">Location or Zipcode</label>
-            <input type="text" name="zipcode" id="zipcode">
-            <input type="submit" name="submit" id="submit" value="Submit">
-        </form>
-        <button class="change-temp"><img src="icons/thermometer-glass-fahrenheit.svg" id="change-temp-icon"class="icon"></button>
-    </div>
+    
     
 
     <div class="weather-card hidden">
         <h2 class="location"></h2>
         <h4 class="temp"></h4>
         <div class="condition-container">
+            <h5 class="title">Condition</h5>
             <img class="condition-icon big-icon" src="" alt="">
             <p class="condition"></p>
         </div>
