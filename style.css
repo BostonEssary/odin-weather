@@ -69,6 +69,11 @@ a{
     width: auto;
     height: 50px;
 }
+
+.big-icon {
+    width: auto;
+    height: 150px;
+}
 .sunny{
     background-color: rgb(254, 254, 143);
 }

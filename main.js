@@ -11,6 +11,7 @@ const changeTempIcon = document.getElementById('change-temp-icon')
 const formContainer = document.getElementById('form-container')
 const weatherCard = document.querySelector(".weather-card")
 const condition = document.querySelector(".condition")
+const conditionIcon = document.querySelector('.condition-icon')
 const nav = document.getElementById('nav')
 
 
@@ -100,6 +101,22 @@ function fetchData(){
       temp.textContent = response.current.temp_c + ' Cº'
       changeBGColorCelsius(response.current.temp_c)
     }
-    
+
+    if(response.current.condition.text === "Sunny"){
+      conditionIcon.src = "icons/sun-hot.svg"
+    }
+    else if(response.current.condition.text === "Partly cloudy"){
+      conditionIcon.src = "icons/partly-cloudy-day.svg"
+    }
+    else if(response.current.condition.text === "Clear"){
+      conditionIcon.src = "icons/clear-day.svg"
+    }
+    else if(response.current.condition.text === "Moderate rain"){
+      conditionIcon.src = "icons/raindrops.svg"
+    }
+    else if(response.current.condition.text === "Mist" ){
+      conditionIcon.src = "icons/mist.svg"
+    }
+      
   });
 }
