@@ -10,7 +10,8 @@ const changeTempButton = document.querySelector('.change-temp')
 const changeTempIcon = document.getElementById('change-temp-icon')
 const formContainer = document.getElementById('form-container')
 const weatherCard = document.querySelector(".weather-card")
-
+const condition = document.querySelector(".condition")
+const nav = document.getElementById('nav')
 
 
 
@@ -35,21 +36,29 @@ changeTempButton.addEventListener("click", function(){
 function changeBGColorFahren(climate){
   document.body.removeAttribute('class')
   formContainer.removeAttribute('class')
+  nav.removeAttribute('class')
   if(climate >= 100){
     document.body.classList.add('hot')
+    nav.classList.add('hot')
     formContainer.classList.add('light')
   }
   else if (climate >= 80){
     document.body.classList.add('sunny')
     formContainer.classList.add('light')
+    nav.classList.add('sunny')
+
   }
   else if(climate >= 50){
     document.body.classList.add('cool')
     formContainer.classList.add('dark')
+    nav.classList.add('cool')
+
   }
   else{
     document.body.classList.add('cold')
     formContainer.classList.add('dark')
+    nav.classList.add('cold')
+
   }
 }
 
@@ -79,8 +88,9 @@ function fetchData(){
   })
   .then(function(response) {
     console.log(response)
-    console.log(response.location.name)
+    console.log(response.current.condition.text)
     area.textContent = response.location.name
+    condition.textContent = response.current.condition.text
     if(fTemp === true ){
       temp.textContent = response.current.temp_f + ' Fº'
       changeBGColorFahren(response.current.temp_f)
