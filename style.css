@@ -1,9 +1,16 @@
 *{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+html{
+    height: 100%;
+}
 body{
     background-color: rgb(78, 78, 78);
     transition: background-color .5s ;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 nav{
@@ -61,7 +68,7 @@ input{
     background-color: whitesmoke;
 }
 
-.weather-card {
+#weather-card {
     background-color: white;
     max-width: 400px;
     margin-left: auto;
@@ -103,7 +110,8 @@ input{
     height: 150px;
 }
 .sunny{
-    background-color: rgb(254, 254, 143);
+    background-image: linear-gradient(rgb(254, 254, 143), white);
+
 }
 
 .hot{
@@ -111,7 +119,11 @@ input{
 }
 
 .cool{
-    background-color: lightskyblue !important;
+    background-image: linear-gradient(lightskyblue, white);
+}
+
+.cool-night{
+    background-image: linear-gradient(rgb(17, 16, 90), rgb(143, 143, 143))
 }
 
 .cold{

@@ -9,7 +9,7 @@ const submit = document.getElementById("submit")
 const changeTempButton = document.querySelector('.change-temp')
 const changeTempIcon = document.getElementById('change-temp-icon')
 const formContainer = document.getElementById('form-container')
-const weatherCard = document.querySelector(".weather-card")
+const weatherCard = document.getElementById("weather-card")
 const condition = document.querySelector(".condition")
 const conditionIcon = document.querySelector('.condition-icon')
 const form = document.querySelector('.form')
@@ -36,35 +36,45 @@ changeTempButton.addEventListener("click", function(){
 })
 
 function changeBGColorFahren(climate){
-  document.body.removeAttribute('class')
-  formContainer.removeAttribute('class')
-  nav.removeAttribute('class')
-  form.removeAttribute('class')
+  weatherCard.removeAttribute('class')
+  
   if(climate >= 100){
-    document.body.classList.add('hot')
-    nav.classList.add('hot')
-    form.classList.add('hot')
-    formContainer.classList.add('light')
+    weatherCard.classList.add('hot')
   }
   else if (climate >= 80){
-    document.body.classList.add('sunny')
-    formContainer.classList.add('light')
-    nav.classList.add('sunny')
-    form.classList.add('sunny')
+    weatherCard.classList.add('sunny')
+    
+    
 
   }
   else if(climate >= 50){
-    document.body.classList.add('cool')
-    formContainer.classList.add('dark')
-    nav.classList.add('cool')
-    form.classList.add('cool')
+    weatherCard.classList.add('cool')
 
   }
   else{
-    document.body.classList.add('cold')
-    formContainer.classList.add('dark')
-    nav.classList.add('cold')
-    form.classList.add('cold')
+    weatherCard.classList.add('cold')
+
+  }
+}
+
+function changeBGColorFahrenNight(climate){
+  weatherCard.removeAttribute('class')
+  
+  if(climate >= 100){
+    weatherCard.classList.add('hot')
+  }
+  else if (climate >= 80){
+    weatherCard.classList.add('sunny')
+    
+    
+
+  }
+  else if(climate >= 50){
+    weatherCard.classList.add('cool-night')
+
+  }
+  else{
+    weatherCard.classList.add('cold')
 
   }
 }
@@ -85,6 +95,48 @@ function changeBGColorCelsius(climate){
   }
 }
 
+function changeIconDay(response){
+  if(response.current.condition.text === "Sunny"){
+    conditionIcon.src = "icons/sun-hot.svg"
+  }
+  else if(response.current.condition.text === "Partly cloudy"){
+    conditionIcon.src = "icons/partly-cloudy-day.svg"
+  }
+  else if(response.current.condition.text === "Clear"){
+    conditionIcon.src = "icons/clear-day.svg"
+  }
+  else if(response.current.condition.text === "Moderate rain"){
+    conditionIcon.src = "icons/raindrops.svg"
+  }
+  else if(response.current.condition.text === "Mist" ){
+    conditionIcon.src = "icons/mist.svg"
+  }
+  else if(response.current.condition.text === "Overcast" ){
+    conditionIcon.src = "icons/overcast.svg"
+  }
+}
+
+function changeIconNight(response){
+  if(response.current.condition.text === "Sunny"){
+    conditionIcon.src = "icons/starry-night.svg"
+  }
+  else if(response.current.condition.text === "Partly cloudy"){
+    conditionIcon.src = "icons/partly-cloudy-day.svg"
+  }
+  else if(response.current.condition.text === "Clear"){
+    conditionIcon.src = "icons/starry-night.svg"
+  }
+  else if(response.current.condition.text === "Moderate rain"){
+    conditionIcon.src = "icons/raindrops.svg"
+  }
+  else if(response.current.condition.text === "Mist" ){
+    conditionIcon.src = "icons/mist.svg"
+  }
+  else if(response.current.condition.text === "Overcast" ){
+    conditionIcon.src = "icons/overcast.svg"
+  }
+}
+
 function fetchData(){
   
   let value = document.getElementById("zipcode").value
@@ -94,13 +146,20 @@ function fetchData(){
     return response.json()
   })
   .then(function(response) {
+  
     console.log(response)
-    console.log(response.current.condition.text)
+    console.log(response.current.is_day)
     area.textContent = response.location.name + ', ' + response.location.region
     condition.textContent = response.current.condition.text
     if(fTemp === true ){
       temp.textContent = 'Temp: ' + response.current.temp_f + ' Fº'
-      changeBGColorFahren(response.current.temp_f)
+      if(response.current.is_day === 1){
+        changeBGColorFahren(response.current.temp_f)
+      }
+      else{
+        changeBGColorFahrenNight(response.current.temp_f)
+      }
+      
 
     }
     else{
@@ -108,24 +167,14 @@ function fetchData(){
       changeBGColorCelsius(response.current.temp_c)
     }
 
-    if(response.current.condition.text === "Sunny"){
-      conditionIcon.src = "icons/sun-hot.svg"
+    console.log(response.current.is_day)
+    if(response.current.is_day === 1){
+      changeIconDay(response)
     }
-    else if(response.current.condition.text === "Partly cloudy"){
-      conditionIcon.src = "icons/partly-cloudy-day.svg"
+    else{
+      changeIconNight(response)
     }
-    else if(response.current.condition.text === "Clear"){
-      conditionIcon.src = "icons/clear-day.svg"
-    }
-    else if(response.current.condition.text === "Moderate rain"){
-      conditionIcon.src = "icons/raindrops.svg"
-    }
-    else if(response.current.condition.text === "Mist" ){
-      conditionIcon.src = "icons/mist.svg"
-    }
-    else if(response.current.condition.text === "Overcast" ){
-      conditionIcon.src = "icons/overcast.svg"
-    }
+    
       
   });
 }
