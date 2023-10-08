@@ -13,8 +13,8 @@
         </a>
         <div id="form-container" class="light">
             <form id="form" class="form">
-                <label for="zipcode">Location or Zipcode</label>
-                <input type="text" name="zipcode" id="zipcode">
+                
+                <input type="text" name="zipcode" id="zipcode" placeholder="enter zipcode or location...">
                 <input type="submit" name="submit" id="submit" value="Submit">
             </form>
             <button class="change-temp"><img src="icons/thermometer-glass-fahrenheit.svg" id="change-temp-icon"class="icon"></button>
@@ -24,16 +24,39 @@
     
     
 
-    <div id="weather-card" class="hidden">
-        <h2 class="location"></h2>
-        <h4 class="temp"></h4>
-        <div class="condition-container">
-            <h5 class="title">Condition</h5>
-            <img class="condition-icon big-icon" src="" alt="">
-            <p class="condition"></p>
-        </div>
+    <div id="weather-card" class="hidden "> 
+        <div class="">
+            <div class="location-time">
+                <div class="location-container">
+                    <img class="small-icon location-icon" src="./icons/location-svgrepo-com.svg" alt="">                
+                    <h4 class="location"></h4>
+                </div>
+                <div class="time-container">
+                    <img class="small-icon clock-icon" src="./icons/icons8-clock.svg" alt="">
+                    <h4 class="time"></h4>
+                </div>
+            </div>
         
+        
+        
+        <div class="condition-container">
+            <p class="condition"></p>
+            <h4 class="temp"></h4>
+            <div class="high-low">
+                <div class="high">
+                    <p class="high-temp"></p>
+                </div>
+                <div class="low">
+                    <p class="low-temp"></p>
+                </div>
+            </div>
+            <img class="condition-icon big-icon" src="" alt="">
+            
+        </div>
     </div>
+    </div>
+
+   
 
     <script src="main.js"></script>
 </body>
