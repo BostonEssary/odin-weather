@@ -224,10 +224,20 @@ function fetchForecastData(){
   return response.json()
 })
 .then(function(response) {
-  const todayHigh = Math.round(response.forecast.forecastday[0].day.maxtemp_f)
-  const todayLow = Math.round(response.forecast.forecastday[0].day.mintemp_f)
+  const todayHighF = Math.round(response.forecast.forecastday[0].day.maxtemp_f)
+  const todayLowF = Math.round(response.forecast.forecastday[0].day.mintemp_f)
+  const todayHighC = Math.round(response.forecast.forecastday[0].day.maxtemp_c)
+  const todayLowC = Math.round(response.forecast.forecastday[0].day.mintemp_c)
   
-  highTemp.textContent = "H " + todayHigh
-  lowTemp.textContent = "L " + todayLow
+  if (fTemp === true) {
+    highTemp.textContent = "H " + todayHighF
+    lowTemp.textContent = "L " + todayLowF
+    
+  }
+  else{
+    highTemp.textContent = "H " + todayHighC
+    lowTemp.textContent = "L " + todayLowC
+  }
+ 
 });
 }
