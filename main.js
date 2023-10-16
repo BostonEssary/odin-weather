@@ -122,10 +122,10 @@ function converTime(time){
   let minute = currentTime[1]
 
   console.log(currentTime)
-  if (hour <= 12 && hour > 0){
+  if (hour < 12 && hour > 0){
     standDardTime = "" + hour
   }
-  else if(hour > 12){
+  else if(hour >= 12){
     standDardTime = '' + (hour - 12)
     isAm = false;
   }
